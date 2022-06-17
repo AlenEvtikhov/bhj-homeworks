@@ -1,9 +1,8 @@
-const addText = function () {
+const addText = setInterval(function () {
 	const timer = document.getElementById("timer");
 	timer.textContent -= 1;
 	if (timer.textContent <= 0) {
 		alert("Вы победили в конкурсе!");
+		clearInterval(addText);
 	}
-
-}
-setInterval(addText, 1000);
+}, 100);
