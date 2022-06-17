@@ -5,4 +5,4 @@ const addText = setInterval(function () {
 		alert("Вы победили в конкурсе!");
 		clearInterval(addText);
 	}
-}, 100);
+}, 1000);
