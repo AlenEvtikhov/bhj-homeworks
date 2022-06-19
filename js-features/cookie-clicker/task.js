@@ -1,9 +1,10 @@
 const image = document.getElementById('cookie');
-let timer = Date.now();
+let clickerCounter = document.getElementById('clicker__counter');
+let lastClick = Date.now();
 let button = 0;
 let counter = 0;
 
-function changeSizes() {
+function sizeChange() {
 	counter += 1;
 	let clickTimer = Date.now();
 	if (button === 0) {
@@ -13,7 +14,7 @@ function changeSizes() {
 		button = 0;
 		image.width -= 100;
 	}
-	document.getElementById('clicker__counter').textContent = counter + '\n' + 'Скорость клика: ' + ((clickTimer - timer) / 1000).toFixed(2);
-	timer = Date.now();
+	clickerCounter.textContent = counter + '\n' + 'Скорость клика: ' + (1000 / (clickTimer - lastClick)).toFixed(2) + ' сек.';
+	lastClick = Date.now();
 }
-image.onclick = changeSizes;
+image.onclick = sizeChange;
