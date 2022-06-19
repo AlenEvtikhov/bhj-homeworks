@@ -8,14 +8,12 @@ for (let i = 1; i < 10; i++) {
 			document.getElementById('dead').textContent = hitTarget;
 			if (hitTarget === 10) {
 				alert('Вы одержали победу!');
-				return location.reload();
 			}
 		} else {
 			missedTarget += 1;
 			document.getElementById('lost').textContent = missedTarget;
 			if (missedTarget === 5) {
 				alert('Поражение!');
-				return location.reload();
 			}
 		}
 	}
