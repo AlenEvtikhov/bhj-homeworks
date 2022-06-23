@@ -17,13 +17,19 @@ class Game {
   }
 
   registerEvents() {
-    /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода слова вызываем this.success()
-      При неправильном вводе символа - this.fail();
-     */
+
+    this.currentSymbol = document.querySelector('.symbol_current');
+    window.addEventListener('keyup', (el) => {
+      if (el.key.toLowerCase() === this.currentSymbol.textContent) {
+        this.currentSymbol.classList.remove('symbol_current');
+        if (this.currentSymbol.nextElementSibling) {
+          this.currentSymbol.nextElementSibling.classList.add('symbol_current');
+        }
+        return this.success();
+      } else {
+        return this.fail();
+      }
+    })
   }
 
   success() {
@@ -77,7 +83,7 @@ class Game {
     const html = [...word]
       .map(
         (s, i) =>
-          `<span class="symbol ${i === 0 ? 'symbol_current': ''}">${s}</span>`
+        `<span class="symbol ${i === 0 ? 'symbol_current': ''}">${s}</span>`
       )
       .join('');
     this.wordElement.innerHTML = html;
@@ -87,4 +93,3 @@ class Game {
 }
 
 new Game(document.getElementById('game'))
-
